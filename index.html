@@ -12,6 +12,8 @@
             justify-content: center;
             align-items: center;
             background-color: #050210;
+
+            place-content: center;
         }
 
         .box {
@@ -44,18 +46,6 @@
             background-color: #050210;
         }
 
-        @keyframes animateInside {
-            from {
-                width: 1px;
-                height: 1px;
-            }
-
-            to {
-                width: 50vh;
-                height: 50vh;
-            }
-        }
-
         .box span {
             position: absolute;
             width: 100%;
@@ -79,15 +69,63 @@
         .box span:nth-child(4) {
             filter: blur(55px);
         }
+
+        #containter {
+            width: 600px;
+            height: 400px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .circle {
+            border-radius: 50%;
+            width: 205px;
+            height: 205px;
+            background-color: #110a2b;
+            position: absolute;
+            opacity: 0;
+            margin: -392px;
+            margin-left: 183px;
+            animation: scaleIn 1s infinite cubic-bezier(0.36, 0.11, 0.89, .32);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.5, 0.5);
+                opacity: 0.5;
+            }
+
+            to {
+                transform: scale(2.5, 2.5);
+                opacity: 0;
+            }
+
+        }
+
+        .item {
+            z-index: 100;
+            padding: 5px;
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="box">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+
+    <div id="outerContainer">
+        <div id="container">
+            <div class="item">
+                <div class="box">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="circle" style="animation-delay:2s"></div>
+        </div>
     </div>
 </body>
 
